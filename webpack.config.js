@@ -1,10 +1,20 @@
-//webpak 配置文件
+// 
+//  webpack.config.js
+//  fingerApp
+//  
+//  Created by air on 2017-02-26.
+//  Copyright 2017 air. All rights reserved.
+// 
 'use strict'
 const webpack = require('webpack');
 const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
-
+/**
+ * @description 入口文件封装函数，针对多文件，多输出
+ * @param {Array} globPath -文件路径函数
+ * @return {Object} 返回文件路径对象
+ */
 function entries(globPath) {
 	var files = [],
 		entries = {},
@@ -28,6 +38,7 @@ module.exports = {
 		'assets/src/*.js'
 	]),
 	output: {
-		filename: './dist/js/[name].mini.js'
+		path: path.resolve(__dirname, 'dist/js'),
+		filename: '[name].mini.js'
 	}
 };
