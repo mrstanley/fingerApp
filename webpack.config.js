@@ -35,10 +35,13 @@ function entries(globPath) {
 
 module.exports = {
 	entry: entries([
-		'assets/src/*.js'
+		'apps/src/*.js'
 	]),
 	output: {
 		path: path.resolve(__dirname, 'dist/js'),
 		filename: '[name].mini.js'
+	},
+	module: {
+		rules: []
 	}
 };

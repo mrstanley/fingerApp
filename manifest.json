@@ -189,5 +189,31 @@
 				}
 			}
 		}
+	},
+	"dependencies":{
+		"pages": {
+			"index.html": {
+				"href": "index.html",
+				"resources": [
+					"public/js/mui.min.js",
+					"dist/js/index.mini.js",
+					"public/css/mui.min.css",
+					"public/fonts/mui.ttf"
+				],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"LICENSE",
+				"assets/src/index.js",
+				"public/css/mui.css",
+				"package.json",
+				"assets/common/bar.js",
+				"webpack.config.js",
+				"README.md",
+				"public/js/mui.js"
+			]
+		}
 	}
 }
