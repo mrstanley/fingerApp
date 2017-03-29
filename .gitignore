@@ -1,3 +1,7 @@
 node_modules/
 dist/
 unpackage/
+.eslintrc.json
+.gitignore
+.vscode
+.project
