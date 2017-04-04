@@ -33,7 +33,7 @@ let entryFiles = entries([
 	'app/src/views/*.ts',
 	'app/src/views/*/*.ts'
 ]);
-
+//多页面支持
 function createHtml(files) {
 	let htmlList = [],
 		fileKeys = Object.keys(files),
