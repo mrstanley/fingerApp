@@ -1,7 +1,7 @@
 {
 	"@platforms": ["android", "iPhone", "iPad"],
 	"id": "H50E2BA5B",/*应用的标识，创建应用时自动生成，勿手动修改*/
-	"name": "fingerApp",/*应用名称，程序桌面图标名称*/
+	"name": "fingerTip",/*应用名称，程序桌面图标名称*/
 	"version": {
 		"name": "1.0.0",/*应用版本名称*/
 		"code": "83"
@@ -10,7 +10,7 @@
 	"icons": {
 		"72": "icon.png"
 	},
-	"launch_path": "index.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+	"launch_path": "dist/app/index.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
 	"developer": {
 		"name": "",/*开发者名称*/
 		"email": "",/*开发者邮箱地址*/
@@ -191,29 +191,71 @@
 		}
 	},
 	"dependencies":{
-		"pages": {
-			"index.html": {
-				"href": "index.html",
-				"resources": [
-					"public/js/mui.min.js",
-					"dist/js/index.mini.js",
-					"public/css/mui.min.css",
-					"public/fonts/mui.ttf"
-				],
-				"priority": 0
-			}
-		},
-		"idle": {
-			"resources": [
-				"LICENSE",
-				"assets/src/index.js",
-				"public/css/mui.css",
-				"package.json",
-				"assets/common/bar.js",
-				"webpack.config.js",
-				"README.md",
-				"public/js/mui.js"
-			]
-		}
-	}
+	  "pages": {
+	    "index.html": {
+	      "href": "index.html",
+	      "resources": [
+	        "public/js/mui.min.js",
+	        "dist/js/index.mini.js",
+	        "public/css/mui.min.css",
+	        "public/fonts/mui.ttf"
+	      ],
+	      "priority": 0
+	    },
+	    "dist/app/index.html": {
+	      "href": "dist/app/index.html",
+	      "resources": [
+	        "dist/app/assets/css/mui.min.css",
+	        "dist/app/assets/fonts/mui.ttf",
+	        "dist/app/assets/js/mui.min.js",
+	        "dist/app/js/vendor.js",
+	        "dist/app/js/index.js"
+	      ],
+	      "priority": 0,
+	      "refer": []
+	    }
+	  },
+	  "idle": {
+	    "resources": [
+	      "dist/app/js/splash.js",
+	      "app/src/views/splash/componet/children.ts",
+	      "app/src/views/splash/splash.ts",
+	      "app/src/common/bar.ts",
+	      "assets/fonts/mui.ttf",
+	      "assets/css/mui.css",
+	      "LICENSE",
+	      "app/src/views/index.ts",
+	      "assets/js/mui.min.js",
+	      "dist/app/assets/js/mui.js",
+	      "yarn-error.log",
+	      "dist/app/assets/css/mui.css",
+	      "package.json",
+	      "dist/app/splash.html",
+	      "assets/css/mui.min.css",
+	      "tslint.json",
+	      "yarn.lock",
+	      "webpack.config.js",
+	      "assets/js/mui.js",
+	      "README.md"
+	    ]
+	  }
+	},
+	"unpackage":[
+	  "app/src/common/bar.ts",
+	  "app/src/views/index.ts",
+	  "app/src/views/splash/componet/children.ts",
+	  "app/src/views/splash/splash.ts",
+	  "assets/css/mui.css",
+	  "assets/css/mui.min.css",
+	  "assets/fonts/mui.ttf",
+	  "assets/js/mui.js",
+	  "assets/js/mui.min.js",
+	  "LICENSE",
+	  "README.md",
+	  "package.json",
+	  "tslint.json",
+	  "webpack.config.js",
+	  "yarn-error.log",
+	  "yarn.lock"
+	]
 }
