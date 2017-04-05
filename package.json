@@ -4,7 +4,8 @@
   "description": "personal project test ",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "webpack -w"
+    "dev": "NODE_ENV=development webpack -w --color",
+    "build": "NODE_ENV=production webpack -p --color"
   },
   "repository": {
     "type": "git",

@@ -63,6 +63,7 @@ function createHtml(files) {
 	return htmlList;
 }
 
+//分离出常用模块
 entryFiles.vendor = ['vue'];
 
 module.exports = {
