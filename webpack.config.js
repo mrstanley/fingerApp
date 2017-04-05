@@ -10,6 +10,13 @@ const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
 
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+const extractSass = new ExtractTextPlugin({
+	filename: "css/[name].[contenthash].css",
+	disable: process.env.NODE_ENV === "development"
+});
+
 //入口文件封装函数，针对多个文件，多个输出
 
 function entries(globPath) {
@@ -30,8 +37,8 @@ function entries(globPath) {
 }
 
 let entryFiles = entries([
-	'app/src/views/*.ts',
-	'app/src/views/*/*.ts'
+	'app/src/components/*.ts',
+	'app/src/components/*/*.ts'
 ]);
 //多页面支持
 function createHtml(files) {
@@ -62,10 +69,10 @@ module.exports = {
 	entry: entryFiles,
 	output: {
 		path: path.resolve(__dirname, 'dist/app'),
-		filename: 'js/[name].js'
+		filename: 'js/[name].[chunkhash].js'
 	},
 	resolve: {
-		extensions: ['.js', '.ts', 'tsx', '.vue'],
+		extensions: ['.js', '.ts', 'tsx', '.vue', '.scss'],
 		alias: {
 			'vue$': 'vue/dist/vue.common.js'
 		}
@@ -81,13 +88,15 @@ module.exports = {
 			},
 			{
 				test: /\.scss$/,
-				use: [{
-					loader: "style-loader" // creates style nodes from JS strings
-				}, {
-					loader: "css-loader" // translates CSS into CommonJS
-				}, {
-					loader: "sass-loader" // compiles Sass to CSS
-				}]
+				use: extractSass.extract({
+					use: [{
+						loader: "css-loader"
+					}, {
+						loader: "sass-loader"
+					}],
+					// use style-loader in development
+					fallback: "style-loader"
+				})
 			},
 			{
 				test: /\.(png|jpg|gif|svg|ttf)$/,
@@ -108,14 +117,13 @@ module.exports = {
 			name: 'vendor',
 			minChunks: function (module, count) {
 				// any required modules inside node_modules are extracted to vendor
-				return (
-					module.resource &&
-					/\.js$/.test(module.resource) &&
-					module.resource.indexOf(
-						path.join(__dirname, '../node_modules')
-					) === 0
-				)
+				return (module.resource && /\.js$/.test(module.resource) && module.resource.indexOf(path.join(__dirname, '../node_modules')) === 0);
 			}
-		})
+		}),
+		new webpack.optimize.CommonsChunkPlugin({
+			name: 'manifest' //But since there are no more common modules between them we end up with just the runtime code included in the manifest file
+		}),
+		new ExtractTextPlugin("styles.css"),
+		extractSass
 	])
 };
