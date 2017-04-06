@@ -6,7 +6,7 @@ import * as Vue from 'vue'
 
 new Vue({
     el: '#index',
-    template: '<div>hello word</div>',
+    template: '<div>hello word hehe</div>',
     created: function () {
         // alert(123);
     }

@@ -189,5 +189,67 @@
 				}
 			}
 		}
-	}
+	},
+	"dependencies":{
+	  "pages": {
+	    "dist/app/index.html": {
+	      "href": "dist/app/index.html",
+	      "resources": [
+	        "dist/app/assets/css/mui.min.css",
+	        "dist/app/assets/fonts/mui.ttf",
+	        "dist/app/css/index.2f4b2f5f95137b21e589820e723abb27.css",
+	        "dist/app/assets/js/mui.min.js",
+	        "dist/app/js/manifest.1ec363a1d976c743b98d.js",
+	        "dist/app/js/vendor.f379324794ed95f11da2.js",
+	        "dist/app/js/index.c2105b5340866449c8c8.js"
+	      ],
+	      "priority": 0,
+	      "refer": []
+	    }
+	  },
+	  "idle": {
+	    "resources": [
+	      "app/src/components/index.ts",
+	      "app/src/common/bar.ts",
+	      "assets/fonts/mui.ttf",
+	      "assets/css/mui.css",
+	      "app/src/components/splash/splash.ts",
+	      "app/src/components/splash/componets/children.ts",
+	      "dist/app/js/splash.9fbf143fe0ea8176e4ee.js",
+	      "LICENSE",
+	      "index.html",
+	      "assets/js/mui.min.js",
+	      "dist/app/assets/js/mui.js",
+	      "dist/app/assets/css/mui.css",
+	      "package.json",
+	      "dist/app/splash.html",
+	      "assets/css/mui.min.css",
+	      "tslint.json",
+	      "yarn.lock",
+	      "webpack.config.js",
+	      "assets/js/mui.js",
+	      "app/src/components/index.scss",
+	      "README.md"
+	    ]
+	  }
+	},
+	"unpackage":[
+	  "app/src/common/bar.ts",
+	  "app/src/components/index.scss",
+	  "app/src/components/index.ts",
+	  "app/src/components/splash/componets/children.ts",
+	  "app/src/components/splash/splash.ts",
+	  "assets/css/mui.css",
+	  "assets/css/mui.min.css",
+	  "assets/fonts/mui.ttf",
+	  "assets/js/mui.js",
+	  "assets/js/mui.min.js",
+	  "LICENSE",
+	  "README.md",
+	  "index.html",
+	  "package.json",
+	  "tslint.json",
+	  "webpack.config.js",
+	  "yarn.lock"
+	]
 }
