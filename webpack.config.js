@@ -58,13 +58,13 @@ function createHtml(files) {
 		// 自动将引用插入html
 		inject: true,
 		// 每个html引用的js模块，也可以在这里加上vendor等公用模块
-		chunks: ['vendor', name]
+		chunks: ['manifest', 'vendor', name]
 	})));
 	return htmlList;
 }
 
 //分离出常用模块
-entryFiles.vendor = ['vue'];
+entryFiles.vendor = ['vue', 'lodash'];
 
 module.exports = {
 	entry: entryFiles,

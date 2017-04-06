@@ -40,6 +40,7 @@
     "webpack": "^2.3.2"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.61",
     "vue": "^2.2.6",
     "vue-router": "^2.3.0",
     "vuets": "^0.10.0",
