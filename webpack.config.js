@@ -13,7 +13,8 @@ const glob = require('glob');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const extractSass = new ExtractTextPlugin({
-	filename: "css/[name].[contenthash].css",
+	// filename: "css/[name].[contenthash].css",
+	filename: "css/[name].css",
 	disable: process.env.NODE_ENV === "development"
 });
 
@@ -70,7 +71,8 @@ module.exports = {
 	entry: entryFiles,
 	output: {
 		path: path.resolve(__dirname, 'dist/app'),
-		filename: 'js/[name].[chunkhash].js'
+		filename: 'js/[name].js'
+		// filename: 'js/[name].[chunkhash].js'
 	},
 	resolve: {
 		extensions: ['.js', '.ts', 'tsx', '.vue', '.scss'],
