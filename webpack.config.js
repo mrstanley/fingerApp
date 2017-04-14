@@ -65,7 +65,7 @@ function createHtml(files) {
 }
 
 //分离出常用模块
-entryFiles.vendor = ['vue', 'lodash'];
+entryFiles.vendor = ['vue', 'lodash', 'vuets'];
 
 module.exports = {
 	entry: entryFiles,

@@ -6,6 +6,8 @@ import * as Vue from 'vue'
 
 const plus: any = (<any>window).plus
 
+console.log(component);
+
 new Vue({
     el: '#index',
     template: '<div>hello word wakaka</div>',

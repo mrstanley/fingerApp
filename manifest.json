@@ -201,7 +201,11 @@
 	        "dist/app/assets/js/mui.min.js",
 	        "dist/app/js/manifest.1ec363a1d976c743b98d.js",
 	        "dist/app/js/vendor.f379324794ed95f11da2.js",
-	        "dist/app/js/index.c2105b5340866449c8c8.js"
+	        "dist/app/js/index.c2105b5340866449c8c8.js",
+	        "dist/app/css/index.css",
+	        "dist/app/js/manifest.js",
+	        "dist/app/js/vendor.js",
+	        "dist/app/js/index.js"
 	      ],
 	      "priority": 0,
 	      "refer": []
@@ -210,12 +214,12 @@
 	  "idle": {
 	    "resources": [
 	      "app/src/components/index.ts",
+	      "dist/app/js/splash.js",
 	      "app/src/common/bar.ts",
 	      "assets/fonts/mui.ttf",
 	      "assets/css/mui.css",
 	      "app/src/components/splash/splash.ts",
 	      "app/src/components/splash/componets/children.ts",
-	      "dist/app/js/splash.9fbf143fe0ea8176e4ee.js",
 	      "LICENSE",
 	      "index.html",
 	      "assets/js/mui.min.js",
@@ -226,8 +230,8 @@
 	      "assets/css/mui.min.css",
 	      "tslint.json",
 	      "yarn.lock",
-	      "webpack.config.js",
 	      "assets/js/mui.js",
+	      "webpack.config.js",
 	      "app/src/components/index.scss",
 	      "README.md"
 	    ]

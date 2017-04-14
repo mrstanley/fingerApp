@@ -41,11 +41,10 @@
   },
   "dependencies": {
     "@types/lodash": "^4.14.61",
-    "@types/vue": "^2.0.0",
+    "@types/zepto": "^1.0.28",
     "vue": "^2.2.6",
     "vue-router": "^2.3.0",
-    "vue-typescript": "^0.7.0",
     "vuets": "^0.10.0",
-    "zepto": "^1.2.0"
+    "vuex": "^2.3.0"
   }
 }
