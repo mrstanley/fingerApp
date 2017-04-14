@@ -2886,6 +2886,12 @@ vue-router@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-2.3.0.tgz#a25c8359e8ca989d22ce79f64322eb0ad0c8670f"
 
+vue-typescript@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/vue-typescript/-/vue-typescript-0.7.0.tgz#fae646aa15b442c49f41a0d6c0829dfb2ae35c77"
+  dependencies:
+    clone "^1.0.2"
+
 vue@*, vue@^2.2.6:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.2.6.tgz#451714b394dd6d4eae7b773c40c2034a59621aed"

@@ -44,6 +44,7 @@
     "@types/vue": "^2.0.0",
     "vue": "^2.2.6",
     "vue-router": "^2.3.0",
+    "vue-typescript": "^0.7.0",
     "vuets": "^0.10.0",
     "zepto": "^1.2.0"
   }
