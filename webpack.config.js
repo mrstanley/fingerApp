@@ -3,22 +3,25 @@
 //  Copyright 2017 air. All rights reserved.
 // 
 'use strict'
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const fs = require('fs');
-const path = require('path');
-const glob = require('glob');
+let webpack = require('webpack');
+let HtmlWebpackPlugin = require('html-webpack-plugin');
+let CopyWebpackPlugin = require('copy-webpack-plugin');
+let fs = require('fs');
+let path = require('path');
+let glob = require('glob');
 
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+let ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-const extractSass = new ExtractTextPlugin({
+const ISDEV = process.env.NODE_ENV === "development";
+const OUTPATH = ISDEV ? 'app_dev' : 'app_build';
+
+let extractSass = new ExtractTextPlugin({
 	// filename: "css/[name].[contenthash].css",
-	filename: "css/[name].css",
-	disable: process.env.NODE_ENV === "development"
+	// disable: ISDEV,
+	filename: "css/[name].css"
 });
 
-//入口文件封装函数，针对多个文件，多个输出
+//  入口文件封装函数，针对多个文件，多个输出
 
 function entries(globPath) {
 	let files = [],
@@ -41,7 +44,7 @@ let entryFiles = entries([
 	'app/src/components/*.ts',
 	'app/src/components/*/*.ts'
 ]);
-//多页面支持
+//  多页面支持
 function createHtml(files) {
 	let htmlList = [],
 		fileKeys = Object.keys(files),
@@ -53,7 +56,7 @@ function createHtml(files) {
 		filename: name + '.html',
 		// 每个html的模版，这里多个页面使用同一个模版
 		minify: {
-			collapseWhitespace: false
+			collapseWhitespace: !ISDEV
 		},
 		template: './index.html',
 		// 自动将引用插入html
@@ -64,13 +67,13 @@ function createHtml(files) {
 	return htmlList;
 }
 
-//分离出常用模块
+//  分离出常用模块
 entryFiles.vendor = ['vue', 'lodash', 'vuets'];
 
 module.exports = {
 	entry: entryFiles,
 	output: {
-		path: path.resolve(__dirname, 'dist/app'),
+		path: path.resolve(__dirname, 'dist/' + OUTPATH),
 		filename: 'js/[name].js'
 		// filename: 'js/[name].[chunkhash].js'
 	},
@@ -110,6 +113,7 @@ module.exports = {
 			}
 		]
 	},
+	devtool: ISDEV ? '#source-map' : false,
 	plugins: createHtml(entryFiles).concat([
 		new CopyWebpackPlugin([{
 			from: 'assets',

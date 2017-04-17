@@ -10,7 +10,7 @@
 	"icons": {
 		"72": "icon.png"
 	},
-	"launch_path": "dist/app/index.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+	"launch_path": "dist/app_dev/index.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
 	"developer": {
 		"name": "",/*开发者名称*/
 		"email": "",/*开发者邮箱地址*/
@@ -126,7 +126,7 @@
 				"aliasname": "",/*Android应用打包使用密钥库中证书的别名*/
 				"permissions": ["<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>","<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.READ_LOGS\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"com.android.launcher.permission.UNINSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>","<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>","<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"com.android.launcher.permission.INSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>","<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"]
 			},
-			"orientation": ["portrait-primary", "portrait-secondary"],/*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
+			"orientation": ["portrait-primary"],/*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
 			"icons": {
 				"ios": {
 					"prerendered": true, /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
@@ -209,31 +209,56 @@
 	      ],
 	      "priority": 0,
 	      "refer": []
+	    },
+	    "dist/app_build/index.html": {
+	      "href": "dist/app_build/index.html",
+	      "resources": [
+	        "dist/app_build/assets/css/mui.min.css",
+	        "dist/app_build/assets/fonts/mui.ttf",
+	        "dist/app_build/css/index.css",
+	        "dist/app_build/assets/js/mui.min.js",
+	        "dist/app_build/js/manifest.js",
+	        "dist/app_build/js/vendor.js",
+	        "dist/app_build/js/index.js"
+	      ],
+	      "priority": 0
 	    }
 	  },
 	  "idle": {
 	    "resources": [
-	      "app/src/components/index.ts",
-	      "dist/app/js/splash.js",
+	      "dist/app_dev/js/splash.js",
+	      "dist/app_dev/js/manifest.js",
+	      "dist/app_dev/css/index.css",
+	      "dist/app_dev/js/index.js",
 	      "app/src/common/bar.ts",
+	      "dist/app_dev/assets/css/mui.min.css",
+	      "dist/app_dev/assets/js/mui.js",
 	      "assets/fonts/mui.ttf",
 	      "assets/css/mui.css",
-	      "app/src/components/splash/splash.ts",
 	      "app/src/components/splash/componets/children.ts",
 	      "LICENSE",
-	      "index.html",
 	      "assets/js/mui.min.js",
-	      "dist/app/assets/js/mui.js",
-	      "dist/app/assets/css/mui.css",
 	      "package.json",
-	      "dist/app/splash.html",
 	      "assets/css/mui.min.css",
+	      "dist/app_dev/assets/css/mui.css",
 	      "tslint.json",
-	      "yarn.lock",
 	      "assets/js/mui.js",
 	      "webpack.config.js",
-	      "app/src/components/index.scss",
-	      "README.md"
+	      "README.md",
+	      "app/src/components/index.ts",
+	      "dist/app_build/assets/js/mui.js",
+	      "dist/app_build/assets/css/mui.css",
+	      "dist/app_dev/assets/js/mui.min.js",
+	      "dist/app_build/splash.html",
+	      "dist/app_dev/splash.html",
+	      "app/src/components/splash/splash.ts",
+	      "index.html",
+	      "dist/app_dev/assets/fonts/mui.ttf",
+	      "dist/app_build/js/splash.js",
+	      "dist/app_dev/js/vendor.js",
+	      "yarn.lock",
+	      "dist/app_dev/index.html",
+	      "app/src/components/index.scss"
 	    ]
 	  }
 	},
