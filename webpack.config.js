@@ -1,7 +1,8 @@
-//  
-//  Created by xiaolin on 2017-02-26.
-//  Copyright 2017 air. All rights reserved.
-// 
+/**
+ *  Created by xiaolin on 2017-02-26.
+ *	Copyright 2017 air. All rights reserved.
+ */
+
 'use strict'
 let webpack = require('webpack');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
