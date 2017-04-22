@@ -12,4 +12,4 @@ new Vue({
     created() {
         console.log('created');
     }
-})
+});
