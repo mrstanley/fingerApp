@@ -102,13 +102,13 @@ function plusReady() {
         titleView = plus.webview.getLaunchWebview().getNavigationbar();
     }
 
-    //开启回弹
+    // 开启回弹
     main.setStyle({
         bounce: "vertical",
         bounceBackground: "#e5e5e5"
     });
 
-    //绘制左上角menu图标
+    // 绘制左上角menu图标
     let bitmap_menu = new plus.nativeObj.Bitmap("menu", "_www/dist/app_dev/assets/images/user-list.png");
     titleView.drawBitmap(bitmap_menu, {}, {
         top: "10px",
@@ -116,7 +116,7 @@ function plusReady() {
         width: "24px",
         height: "24px"
     });
-
+    // 绘制右上角图标
     let search_left = window.innerWidth - 34;
     let bitmap_search = new plus.nativeObj.Bitmap("search", "_www/dist/app_dev/assets/images/search-plus.png");
     titleView.drawBitmap(bitmap_search, {}, {

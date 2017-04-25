@@ -282,7 +282,8 @@
 					"dist/app_dev/css/index.css",
 					"dist/app_dev/js/index.js",
 					"dist/app_dev/js/vendor.js",
-					"dist/app_dev/assets/css/mui.min.css"
+					"dist/app_dev/assets/css/mui.min.css",
+					"dist/app_dev/assets/js/wilddog-auth.js"
 				],
 				"refer": [
 					"dist/app_dev/slidBar.html"
