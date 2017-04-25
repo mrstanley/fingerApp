@@ -1,0 +1,42 @@
+<div class="mui-content" id="menuInfo">
+    <header class="userInfo" id="userInfo">
+        <div class="avatar" :style="{backgroundImage:'url('+avatar+')'}" @tap.stop="openUserInfo"></div>
+        <a class="mui-icon iconfont icon-message1 mui-pull-right"></a>
+        <a class="mui-icon iconfont icon-qrcode mui-pull-right" @tap.stop="openUserInfo"></a>
+        <h4 @tap.stop="openUserInfo">{{nickName}}</h4>
+        <p @tap.stop="openUserInfo">{{signature}}</p>
+    </header>
+    <div class="content mui-hidden">
+        <p style="margin: 10px 15px;">
+            <button id="close-btn" type="button" class="mui-btn mui-btn-danger mui-btn-block" style="padding: 5px 20px;">关闭侧滑菜单</button>
+        </p>
+    </div>
+    <ul class="mui-table-view menu-list">
+        <li class="mui-table-view-cell">
+            <span class="iconfont icon-ad mui-pull-left"></span>广告
+            <span class="mui-badge mui-badge-inverted">11</span>
+        </li>
+        <li class="mui-table-view-cell">
+            <span class="iconfont icon-money mui-pull-left"></span>推币
+            <span class="mui-badge mui-badge-inverted">22</span>
+        </li>
+        <li class="mui-table-view-cell">
+            <span class="iconfont icon-partner mui-pull-left"></span>助推
+            <span class="mui-badge mui-badge-inverted">33</span>
+        </li>
+    </ul>
+    <ul class="mui-table-view menu-list">
+        <li class="mui-table-view-cell">
+            <span class="iconfont icon-tubiao mui-pull-left"></span>统计
+        </li>
+        <li class="mui-table-view-cell">
+            <span class="iconfont icon-shoucang mui-pull-left"></span>收藏
+            <span class="mui-badge mui-badge-inverted">22</span>
+        </li>
+    </ul>
+    <ul class="mui-table-view" id="setting">
+        <li class="mui-table-view-cell" @tap.stop="openPage('login')">
+            <span class="iconfont icon-setting mui-pull-left"></span>设置
+        </li>
+    </ul>
+</div>

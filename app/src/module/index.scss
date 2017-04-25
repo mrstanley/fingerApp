@@ -1,0 +1,9 @@
+@import "../common/scss/reset";
+body {
+    color: darkblue;
+    &.mui-plus {
+        header.mui-bar {
+            display: none;
+        }
+    }
+}

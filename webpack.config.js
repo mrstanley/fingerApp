@@ -42,8 +42,8 @@ function entries(globPath) {
 }
 
 let entryFiles = entries([
-	'app/src/components/*.ts',
-	'app/src/components/*/*.ts'
+	'app/src/module/*.ts',
+	'app/src/module/*/*.ts'
 ]);
 //  多页面支持
 function createHtml(files) {
@@ -79,7 +79,7 @@ module.exports = {
 		// filename: 'js/[name].[chunkhash].js'
 	},
 	resolve: {
-		extensions: ['.js', '.ts', 'tsx', '.vue', '.scss'],
+		extensions: ['.js', '.ts', 'tsx', '.vue', '.scss', '.html'],
 		alias: {
 			'vue$': 'vue/dist/vue.common.js'
 		}
@@ -92,6 +92,13 @@ module.exports = {
 			{
 				test: /\.tsx?$/,
 				loader: 'awesome-typescript-loader'
+			},
+			{
+				test: /\.html$/,
+				loader: 'html-loader',
+				include: [
+					path.resolve(__dirname, "app")
+				]
 			},
 			{
 				test: /\.scss$/,

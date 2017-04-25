@@ -6,13 +6,18 @@
 		<%= htmlWebpackPlugin.options.title %>
 	</title>
 	<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<script src="html5plus://ready"></script>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_56ostlwod8bvgqfr.css" />
 	<link href="assets/css/mui.min.css" rel="stylesheet" />
 </head>
 
 <body>
 	<div id="<%= htmlWebpackPlugin.options.title %>"></div>
-	<script src="assets/js/mui.min.js"></script>
+	<script type="text/javascript" src="assets/js/mui.min.js"></script>
+	<script type="text/javascript" src="assets/js/wilddog-auth.js"></script>
 </body>
 
 </html>

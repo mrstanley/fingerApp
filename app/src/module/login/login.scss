@@ -1,0 +1,189 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    background: #fff;
+}
+
+.t3d {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-transition: all 0.3s ease-in;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+#login_form {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    .bg {
+        position: absolute;
+        height: 100%;
+        width: 170%;
+        left: 50%;
+        margin-left: -85%;
+        z-index: 1;
+        background: -webkit-gradient(linear, center top, center bottom, from(#a6e7ff), to(#cbedFF));
+        background: -webkit-gradient(linear, top, from(#a6e7ff), to(#cbedFF));
+        background: -webkit-linear-gradient(top, #a6e7ff, #cbedFF);
+        &.login {
+            height: 60%;
+            border-bottom-left-radius: 100%;
+            border-bottom-right-radius: 100%;
+        }
+    }
+    .table {
+        display: table;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+        z-index: 3;
+        .table-cell {
+            display: table-cell;
+            vertical-align: middle;
+        }
+    }
+    .logo {
+        width: 95px;
+        height: 95px;
+        margin: 0 auto;
+        border-radius: 100%;
+        background-color: #fff;
+        box-shadow: 0 0 20px 0 rgba(96, 202, 249, 0.78);
+    }
+}
+
+.loginform {
+    width: 80%;
+    margin: 13% auto 10%;
+    background-color: #fff;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 0 20px 0 rgba(96, 202, 249, 0.78);
+    ul {
+        margin: 0 20px;
+        padding: 0;
+        list-style: none;
+        position: relative;
+        li {
+            float: left;
+            width: 50%;
+            text-align: center;
+            color: #a2dfff;
+            height: 45px;
+            line-height: 45px;
+            position: relative;
+            cursor: pointer;
+            &.active {
+                color: #2aadf0;
+            }
+            &:nth-child(2).active+span {
+                left: 75%;
+            }
+        }
+        .float {
+            z-index: 2;
+            display: block;
+            content: ' ';
+            height: 2px;
+            width: 24%;
+            left: 25%;
+            top: 42px;
+            margin-left: -12%;
+            border-radius: 30%;
+            background: #2aadf0;
+            position: absolute;
+        }
+    }
+    .input-item {
+        height: 40px;
+        margin: 5px 20px;
+        position: relative;
+        z-index: 4;
+        overflow: hidden;
+        opacity: 1;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-transition: all 0.3s ease-in;
+        transition: all 0.3s ease;
+        &.hide {
+            margin: 0 20px;
+            height: 0;
+            opacity: 0;
+        }
+        &:after {
+            content: ' ';
+            height: 1px;
+            background-color: #a6e7ff;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        i {
+            float: left;
+            width: 20%;
+            text-align: center;
+            line-height: 40px;
+            font-size: 26px;
+            color: #4abce6;
+            &.icon-eye {
+                opacity: 0.5;
+            }
+        }
+        input {
+            margin-bottom: 0;
+            border: 0 none;
+            float: left;
+            width: 80%;
+            line-height: 20px;
+            color: #4abce6;
+            padding: 10px 5px;
+            font-size: 14px;
+            &.password {
+                width: 60%;
+            }
+            &::-webkit-input-placeholder {
+                color: #a2dfff;
+                font-weight: normal;
+            }
+        }
+        &.verifyCode:after {
+            right: 80px;
+        }
+    }
+    .loginCont .input-item:nth-child(1) {
+        margin-top: 15px;
+    }
+    .subBtn {
+        width: 100%;
+        text-align: center;
+        display: block;
+        height: 50px;
+        line-height: 50px;
+        background-color: #2AADF0;
+        color: #fff;
+        margin-top: 25px;
+        font-weight: normal;
+        &:active {
+            background-color: rgba(43, 179, 249, 0.82);
+            color: #fff;
+        }
+    }
+    .verifyCodeBtn {
+        position: absolute;
+        right: 0;
+        top: 8px;
+        line-height: 30px;
+        font-size: 12px;
+        padding: 0 5px;
+        color: #4abce6;
+        border: solid 1px #a6e7ff;
+        border-radius: 2px;
+    }
+}
