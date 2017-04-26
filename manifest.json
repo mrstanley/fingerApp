@@ -108,7 +108,7 @@
 		}
 	},
 	"plus": {
-		"launchwebview": {
+		/*"launchwebview": {
 			"navigationbar": {
 				"backgroundcolor": "#fff",
 				"titletext": "测试页面",
@@ -122,7 +122,7 @@
 			"statusbar": {
 				"background": "#fff"
 			}
-		},
+		},*/
 		"hardwareAccelerated": true,
 		"statusbar": {
 			"immersed": true,
@@ -283,7 +283,8 @@
 					"dist/app_dev/js/index.js",
 					"dist/app_dev/js/vendor.js",
 					"dist/app_dev/assets/css/mui.min.css",
-					"dist/app_dev/assets/js/wilddog-auth.js"
+					"dist/app_dev/assets/js/wilddog-auth.js",
+					"dist/app_dev/assets/images/yuantiao.jpg"
 				],
 				"refer": [
 					"dist/app_dev/slidBar.html"

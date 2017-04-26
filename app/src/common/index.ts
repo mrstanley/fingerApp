@@ -30,10 +30,10 @@ export function setImmersed(bg: string | null) {
         return;
     }
     console.log(immersed);
-    var t = document.getElementById('mui-header');
+    var t = document.getElementById('header');
     // t && (t.style.paddingTop = immersed + 'px', t.style.background = '-webkit-linear-gradient(top,rgba(215,75,40,1),rgba(215,75,40,0.8))', t.style.height = (t.offsetHeight + immersed) + 'px');
-    t && (t.style.paddingTop = immersed + 'px', t.style.backgroundColor = bg || '#fff', t.style.height = (t.offsetHeight + immersed) + 'px');
-    t = document.getElementById('mui-content');
+    t && (t.style.paddingTop = immersed + 'px', bg && (t.style.backgroundColor = bg || '#fff'), t.style.height = (t.offsetHeight + immersed) + 'px');
+    t = document.getElementById('content');
     t && (t.style.marginTop = immersed + 'px');
     t = document.getElementById('userInfo');
     t && ((t) => {

@@ -18,7 +18,8 @@ let showMenu = false,
 new Vue({
     el: '#index',
     data: {
-        title: '测试页面'
+        title: '测试页面',
+        banerImg: 'assets/images/yuantiao.jpg'
     },
     template: template,
     mounted() {
@@ -39,21 +40,6 @@ function plusReady() {
         authDomain: "finger.wilddog.com"
     };
     wilddog.initializeApp(config);
-
-    // wilddog.auth().signInWithEmailAndPassword("lixiaolin_23@foxmail.com", "lishaolin_23").then(function(user) {
-    //     // 获取用户
-    //     // console.log(user);
-    //     wilddog.auth().currentUser.updatePhone("13028153703").then(function() {
-    //         // 更新成功
-    //         console.log('success');
-    //     }).catch(function(error) {
-    //         // 发生错误
-    //         console.log(error);
-    //     });
-    // }).catch(function(error) {
-    //     // 错误处理
-    //     console.log(error);
-    // });
 
     // wilddog.auth().signInWithPhoneAndPassword("13028153703", "lishaolin_23").then((res) => console.log('success')).catch((error) => console.log(error));
 
@@ -77,7 +63,6 @@ function plusReady() {
     // });
 
     main = plus.webview.currentWebview();
-
     //预加载侧边菜单
     menu = mui.preload({
         id: 'slidBar',
@@ -96,65 +81,13 @@ function plusReady() {
             autoShow: false
         }
     });
-
-    let titleView = main.getNavigationbar();
-    if (!titleView) {
-        titleView = plus.webview.getLaunchWebview().getNavigationbar();
-    }
-
-    // 开启回弹
-    main.setStyle({
-        bounce: "vertical",
-        bounceBackground: "#e5e5e5"
-    });
-
-    // 绘制左上角menu图标
-    let bitmap_menu = new plus.nativeObj.Bitmap("menu", "_www/dist/app_dev/assets/images/user-list.png");
-    titleView.drawBitmap(bitmap_menu, {}, {
-        top: "10px",
-        left: "10px",
-        width: "24px",
-        height: "24px"
-    });
-    // 绘制右上角图标
-    let search_left = window.innerWidth - 34;
-    let bitmap_search = new plus.nativeObj.Bitmap("search", "_www/dist/app_dev/assets/images/search-plus.png");
-    titleView.drawBitmap(bitmap_search, {}, {
-        top: "10px",
-        left: search_left + "px",
-        width: "24px",
-        height: "24px"
-    });
-    // 遮罩
-    maskView = new plus.nativeObj.View('mask', { top: '0px', right: '0px', height: '44px', width: '100%', backgroundColor: '#000', opacity: '0.1', dock: "top", position: "dock" }, []);
-    main.append(maskView);
-    maskView.hide();
-    titleView.interceptTouchEvent(true);
-
-    titleView.addEventListener("click", function(e) {
-        var x = e.clientX;
-        if (x < 44) { //触发menu菜单
-            openMenu();
-        } else if (x > search_left) { //触发关于页面
-
-        }
-    }, false);
-
-    maskView.addEventListener("click", function(e) {
-        maskView.hide();
-        mask.close();
-    }, false);
-
-    console.log("是否开启硬件加速：" + main.isHardwareAccelerated());
-
 }
+
 if (plus) {
     plusReady();
 } else {
     document.addEventListener('plusready', plusReady, false);
 }
-
-
 
 mui.init({
     swipeBack: false
@@ -187,7 +120,6 @@ function openMenu() {
         }));
         //显示遮罩
         mask.show();
-        maskView.show();
         showMenu = true;
     }
 }
@@ -217,7 +149,6 @@ function _closeMenu() {
         //改变标志位
         showMenu = false;
     }
-    maskView.hide();
 }
 
 //点击左上角图标，打开侧滑菜单；
@@ -225,12 +156,21 @@ let menuIcon: any = document.querySelector('.icon-user-list');
 menuIcon && menuIcon.addEventListener('tap', openMenu);
 //在android4.4中的swipe事件，需要preventDefault一下，否则触发不正常
 //故，在dragleft，dragright中preventDefault
-window.addEventListener('dragright', (e: any) => e.detail.gesture.preventDefault());
-window.addEventListener('dragleft', (e: any) => e.detail.gesture.preventDefault());
+window.addEventListener('dragright', (e: any) => e.detail && e.detail.gesture && e.detail.gesture.preventDefault());
+window.addEventListener('dragleft', (e: any) => e.detail && e.detail.gesture && e.detail.gesture.preventDefault());
 //主界面向右滑动，若菜单未显示，则显示菜单；否则不做任何操作；
 window.addEventListener("swiperight", openMenu);
+let timer;
 //主界面向左滑动，若菜单已显示，则关闭菜单；否则，不做任何操作；
 window.addEventListener("swipeleft", closeMenu);
+window.addEventListener("scroll", () => {
+    clearTimeout(timer);
+    window.removeEventListener("swiperight", openMenu);
+    timer = setTimeout(() => window.addEventListener("swiperight", openMenu),800);
+});
+
+
+
 //menu页面向左滑动，关闭菜单；
 window.addEventListener("menu:swipeleft", closeMenu);
 
