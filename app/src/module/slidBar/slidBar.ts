@@ -10,17 +10,19 @@ let mui: any = (<any>window).mui
 let template: string = require('./slidBar.html');
 
 //获得侧滑主窗口webview对象
-var main = null,
+let main = null,
     menu: object | null = null;
 
 menu = new Vue({
     el: '#slidBar',
-    data: {
-        nickName: '您的称呼',
-        signature: '您的个性签名或个人简介',
-        avatar: 'assets/images/avatar.jpg'
+    data() {
+        return {
+            nickName: '您的称呼',
+            signature: '您的个性签名或个人简介',
+            avatar: 'assets/images/avatar.jpg'
+        }
     },
-    template: template,
+    template,
     mounted() {
         setImmersed(null);
     },

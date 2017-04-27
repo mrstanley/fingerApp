@@ -5,8 +5,37 @@
         <a class="mui-icon iconfont icon-search-plus mui-pull-right"></a>
     </header>
     <div class="mui-content">
-        <!--静态图片-->
-        <img id="img1" :src="banerImg" />
+        <!--轮播图片-->
+        <div id="slider" class="mui-slider">
+            <div class="mui-slider-group mui-slider-loop">
+                <!--支持循环，需要重复图片节点-->
+                <div class="mui-slider-item mui-slider-item-duplicate">
+                    <a title="4" href="#"><img :src="banerImg" /></a>
+                </div>
+                <div class="mui-slider-item">
+                    <a title="1" href="#"><img :src="banerImg" /></a>
+                </div>
+                <div class="mui-slider-item">
+                    <a title="2" href="#"><img :src="banerImg" /></a>
+                </div>
+                <div class="mui-slider-item">
+                    <a title="3" href="#"><img :src="banerImg" /></a>
+                </div>
+                <div class="mui-slider-item">
+                    <a title="4" href="#"><img :src="banerImg" /></a>
+                </div>
+                <!--支持循环，需要重复图片节点-->
+                <div class="mui-slider-item mui-slider-item-duplicate">
+                    <a title="1" href="#"><img :src="banerImg" /></a>
+                </div>
+            </div>
+            <div class="mui-slider-indicator">
+                <div class="mui-indicator mui-active"></div>
+                <div class="mui-indicator"></div>
+                <div class="mui-indicator"></div>
+                <div class="mui-indicator"></div>
+            </div>
+        </div>
         <p style="margin: 30px 15px 20px;">这是transparent bar（透明导航栏）演示页面， 默认情况下标题栏透明， 当用户向下滚动时，标题栏逐渐由透明转变为不透明；当用户再次向上滚动时，标题栏又从不透明变为透明状态。
         </p>
         <p style="margin: 5px 15px 15px 15px;">
@@ -36,6 +65,6 @@
             <li>顶部最好有图片或轮播组件</li>
             <li>导航栏字体颜色和图片颜色协调</li>
         </ul>
-        <h5 class="mui-content-padded">图片类型</h5>                
+        <h5 class="mui-content-padded">图片类型</h5>
     </div>
 </section>

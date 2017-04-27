@@ -1,11 +1,12 @@
 declare function require(path: string): any;
 
-let plus: any = (<any>window).plus
-let mui: any = (<any>window).mui
+let plus: any = (<any>window).plus;
+let mui: any = (<any>window).mui;
+let wilddog: any = (<any>window).wilddog;
 
 export function isImmersed() {
-    var immersed = 0;
-    var ms = (/Html5Plus\/.+\s\(.*(Immersed\/(\d+\.?\d*).*)\)/gi).exec(navigator.userAgent);
+    let immersed = 0;
+    let ms = (/Html5Plus\/.+\s\(.*(Immersed\/(\d+\.?\d*).*)\)/gi).exec(navigator.userAgent);
     if (ms && ms.length >= 3) {
         immersed = parseFloat(ms[2]);
     }
@@ -21,8 +22,8 @@ export function isImmersed() {
  * @param {String|null} str 顶部状态栏颜色
  */
 export function setImmersed(bg: string | null) {
-    var immersed = 0;
-    var ms = (/Html5Plus\/.+\s\(.*(Immersed\/(\d+\.?\d*).*)\)/gi).exec(navigator.userAgent);
+    let immersed = 0;
+    let ms = (/Html5Plus\/.+\s\(.*(Immersed\/(\d+\.?\d*).*)\)/gi).exec(navigator.userAgent);
     if (ms && ms.length >= 3) {
         immersed = parseFloat(ms[2]);
     }
@@ -30,7 +31,7 @@ export function setImmersed(bg: string | null) {
         return;
     }
     console.log(immersed);
-    var t = document.getElementById('header');
+    let t = document.getElementById('header');
     // t && (t.style.paddingTop = immersed + 'px', t.style.background = '-webkit-linear-gradient(top,rgba(215,75,40,1),rgba(215,75,40,0.8))', t.style.height = (t.offsetHeight + immersed) + 'px');
     t && (t.style.paddingTop = immersed + 'px', bg && (t.style.backgroundColor = bg || '#fff'), t.style.height = (t.offsetHeight + immersed) + 'px');
     t = document.getElementById('content');
@@ -53,14 +54,14 @@ export const ROOT = 'http://localhost:3000/';
 
 // 设置应用本地配置
 export let setSettings = (attr, val) => {
-    var settings = getSettings(null);
+    let settings = getSettings(null);
     attr && val.toString() ? settings[attr] = val : '';
     plus.storage.setItem('$settings', JSON.stringify(settings));
 };
 
 // 获取应用本地配置
 export let getSettings = (attr: string | null) => {
-    var settingsText = plus.storage.getItem('$settings') || "{}";
+    let settingsText = plus.storage.getItem('$settings') || "{}";
     return (attr && typeof attr == 'string' ? JSON.parse(settingsText)[attr] : JSON.parse(settingsText));
 };
 // APP显示错误信息，并返回false
@@ -76,8 +77,8 @@ export function getVerifyCode(phone) {
     if (/0?(13|14|15|18|17)[0-9]{9}/.test(phone)) {
         let verifyCodeBtn: any = document.getElementById('verifyCodeBtn');
         verifyCodeBtn.classList.add('mui-disabled');
-        var waitTime = 120;
-        var Timer = setInterval(function () {
+        let waitTime = 120;
+        let Timer = setInterval(function () {
             waitTime--;
             if (waitTime == 0) {
                 clearInterval(Timer);
@@ -91,6 +92,21 @@ export function getVerifyCode(phone) {
         return showError('请输入正确的电话号码');
     }
 };
+
+/**
+ * @description 认证登录
+ * @param success 
+ * @param fail 
+ */
+export function wilddogAuth(success, fail) {
+    let config = {
+        authDomain: "finger.wilddog.com"
+    };
+    wilddog.initializeApp(config);
+    wilddog.auth().onAuthStateChanged((user) => {
+        user ? (success ? success(user) : console.log("user")) : (fail ? fail() : console.log("no user"));
+    });
+}
 
 /**
  *@description 打开新页面

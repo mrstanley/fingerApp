@@ -3,11 +3,15 @@ import './login.scss'
 import * as Vue from 'vue'
 import * as finger from '../../common'
 
-let plus: any = (<any>window).plus
-let mui: any = (<any>window).mui
+let plus: any = (<any>window).plus;
+let mui: any = (<any>window).mui;
+let wilddog: any = (<any>window).wilddog;
+
 
 let template: string = require('./login.html');
 
+
+finger.wilddogAuth(null, null);
 
 mui.init();
 mui.plusReady(function () {
@@ -21,9 +25,9 @@ interface LoginModel {
     verify_code: string
 }
 
-var LoginForm: any = {
+let LoginForm: any = {
     el: '#login',
-    template: template,
+    template,
     data(): LoginModel {
         return {
             type: 'login',
@@ -51,6 +55,14 @@ var LoginForm: any = {
             if (this.type === 'register') {
                 data = (<any>Object).assign(data, { verifyCode: this.verify_code });
                 url = 'users/reg';
+            } else {
+                wilddog.auth().signInWithPhoneAndPassword(this.phone, this.password).then((res) => {
+                    console.log('success');
+                    finger.openPage('index', {});
+                }).catch((error) => {
+                    console.log(error);
+                    finger.showError('手机或密码不正确');
+                });
             }
         },
         showPasswotd(ev) {

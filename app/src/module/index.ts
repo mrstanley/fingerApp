@@ -1,33 +1,42 @@
 declare function require(path: string): any;
 import './index.scss'
 import * as Vue from 'vue'
-import { setImmersed } from '../common'
+import { setImmersed, wilddogAuth } from '../common'
 
-let plus: any = (<any>window).plus
-let mui: any = (<any>window).mui
-let wilddog: any = (<any>window).wilddog
+let plus: any = (<any>window).plus;
+let mui: any = (<any>window).mui;
+let wilddog: any = (<any>window).wilddog;
 
 let startTime = Date.now();
 let template: string = require('./index.html');
 
 let main, menu, maskView, mask = mui.createMask(_closeMenu);
-let showMenu = false,
-    mode = 'menu-move';
-
+let showMenu = false, mode = 'menu-move';
 
 new Vue({
     el: '#index',
-    data: {
-        title: '测试页面',
-        banerImg: 'assets/images/yuantiao.jpg'
+    data() {
+        return {
+            title: '测试页面',
+            banerImg: 'assets/images/yuantiao.jpg'
+        }
     },
-    template: template,
+    template,
     mounted() {
         let endTime = Date.now();
         console.log('render time:' + (endTime - startTime));
         setImmersed(null);
+        var gallery = mui('#slider');
+        gallery.slider({
+            interval: 5000//自动轮播周期，若为0则不自动播放，默认为0；
+        });
     }
 });
+
+//认证登录
+wilddogAuth(function (user) {
+    console.log(JSON.stringify(user));
+}, null);
 
 // H5 plus事件处理
 function plusReady() {
@@ -35,33 +44,6 @@ function plusReady() {
     plus.navigator.setStatusBarBackground('#fff');
     plus.navigator.setStatusBarStyle('dark');
     plus.navigator.isFullscreen() ? plus.navigator.setFullscreen(false) : '';
-
-    let config = {
-        authDomain: "finger.wilddog.com"
-    };
-    wilddog.initializeApp(config);
-
-    // wilddog.auth().signInWithPhoneAndPassword("13028153703", "lishaolin_23").then((res) => console.log('success')).catch((error) => console.log(error));
-
-
-    // wilddog.auth().onAuthStateChanged(function(user) {
-    //     if (user) {
-    //         // console.log("user");
-    //         // let endTime = Date.now();
-    //         // console.log('getUser time:' + (endTime - startTime));
-    //         wilddog.auth().currentUser.updateProfile({
-    //             displayName: "lixiaolin",
-    //             photoURL: " "
-    //         }).then(function() {
-    //             // 更新成功
-    //         }).catch(function(error) {
-    //             // 发生错误
-    //         });
-    //     } else {
-    //         console.log("no user");
-    //     }
-    // });
-
     main = plus.webview.currentWebview();
     //预加载侧边菜单
     menu = mui.preload({
@@ -71,8 +53,7 @@ function plusReady() {
             left: '-70%',
             width: '70%',
             popGesture: "none",
-            render: "always",
-            zindex: "9999"
+            render: "always"
         },
         show: {
             aniShow: 'none'
@@ -166,7 +147,7 @@ window.addEventListener("swipeleft", closeMenu);
 window.addEventListener("scroll", () => {
     clearTimeout(timer);
     window.removeEventListener("swiperight", openMenu);
-    timer = setTimeout(() => window.addEventListener("swiperight", openMenu),800);
+    timer = setTimeout(() => window.addEventListener("swiperight", openMenu), 500);
 });
 
 
