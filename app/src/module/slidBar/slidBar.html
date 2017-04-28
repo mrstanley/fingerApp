@@ -1,10 +1,10 @@
 <div class="mui-content" id="menuInfo">
     <header class="userInfo" id="userInfo">
-        <div class="avatar" :style="{backgroundImage:'url('+avatar+')'}" @tap.stop="openUserInfo"></div>
+        <div class="avatar" :style="{backgroundImage:'url('+(avatar||'assets/images/avatar.jpg')+')'}" @tap.stop="openUserInfo"></div>
         <a class="mui-icon iconfont icon-message1 mui-pull-right"></a>
         <a class="mui-icon iconfont icon-qrcode mui-pull-right" @tap.stop="openUserInfo"></a>
-        <h4 @tap.stop="openUserInfo">{{nickName}}</h4>
-        <p @tap.stop="openUserInfo">{{signature}}</p>
+        <h4 @tap.stop="openUserInfo">{{nickName||'您的昵称'}}</h4>
+        <p @tap.stop="openUserInfo">{{signature||'您的个人简介或个性签名'}}</p>
     </header>
     <div class="content mui-hidden">
         <p style="margin: 10px 15px;">
@@ -35,7 +35,7 @@
         </li>
     </ul>
     <ul class="mui-table-view" id="setting">
-        <li class="mui-table-view-cell" @tap.stop="openPage('login')">
+        <li class="mui-table-view-cell">
             <span class="iconfont icon-setting mui-pull-left"></span>设置
         </li>
     </ul>

@@ -1,5 +1,7 @@
 $bg: #f3f3f3;
 $white: #fff;
+$titleFontColor: #5A5A5A;
+$iconColor: #6a80a1;
 .ui-page-login,
 body {
     width: 100%;
@@ -34,12 +36,12 @@ a {
 }
 
 .mui-bar .mui-icon {
-    color: #6a80a1 !important;
+    color: $iconColor !important;
 }
 
 .mui-icon.mui-pull-left span,
 .mui-icon.mui-pull-right span {
-    font-size: 17px;
+    font-size: 16px;
 }
 
 .mui-bar .mui-title {

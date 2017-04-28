@@ -43,7 +43,8 @@ function entries(globPath) {
 
 let entryFiles = entries([
 	'app/src/module/*.ts',
-	'app/src/module/*/*.ts'
+	'app/src/module/*/*.ts',
+	'app/src/module/*/*/*.ts'
 ]);
 //  多页面支持
 function createHtml(files) {
@@ -69,7 +70,7 @@ function createHtml(files) {
 }
 
 //  分离出常用模块
-entryFiles.vendor = ['vue', 'lodash', 'vuets'];
+entryFiles.vendor = ['vue'];
 
 module.exports = {
 	entry: entryFiles,

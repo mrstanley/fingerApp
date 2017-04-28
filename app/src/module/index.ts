@@ -1,7 +1,7 @@
 declare function require(path: string): any;
 import './index.scss'
 import * as Vue from 'vue'
-import { setImmersed, wilddogAuth } from '../common'
+import { setImmersed, wilddogAuth, back } from '../common'
 
 let plus: any = (<any>window).plus;
 let mui: any = (<any>window).mui;
@@ -44,6 +44,7 @@ function plusReady() {
     plus.navigator.setStatusBarBackground('#fff');
     plus.navigator.setStatusBarStyle('dark');
     plus.navigator.isFullscreen() ? plus.navigator.setFullscreen(false) : '';
+
     main = plus.webview.currentWebview();
     //预加载侧边菜单
     menu = mui.preload({
@@ -62,6 +63,14 @@ function plusReady() {
             autoShow: false
         }
     });
+
+    mui.later(() => {
+        let login = plus.webview.getWebviewById('login');
+        login ? login.close('none') : '';
+    }, 500);
+
+    back();
+
 }
 
 if (plus) {
@@ -73,18 +82,6 @@ if (plus) {
 mui.init({
     swipeBack: false
 });
-
-function back() {
-    if (showMenu) {
-        //菜单处于显示状态，返回键应该先关闭菜单,阻止主窗口执行mui.back逻辑；
-        closeMenu();
-        return false;
-    } else {
-        //菜单处于隐藏状态，执行返回时，要先close菜单页面，然后继续执行mui.back逻辑关闭主窗口；
-        menu.close('none');
-        return true;
-    }
-}
 
 /**
  * 显示菜单菜单
@@ -156,4 +153,4 @@ window.addEventListener("scroll", () => {
 window.addEventListener("menu:swipeleft", closeMenu);
 
 //重写mui.menu方法，Android版本menu按键按下可自动打开、关闭侧滑菜单；
-mui.menu = () => showMenu ? closeMenu() : openMenu() 
+mui.menu = () => showMenu ? closeMenu() : openMenu();

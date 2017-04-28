@@ -271,9 +271,14 @@
 					"dist/app_build/assets/js/mui.min.js",
 					"dist/app_build/js/manifest.js",
 					"dist/app_build/js/vendor.js",
-					"dist/app_build/js/index.js"
+					"dist/app_build/js/index.js",
+					"dist/app_build/assets/images/yuantiao.jpg",
+					"dist/app_build/assets/js/wilddog.js"
 				],
-				"priority": 0
+				"priority": 0,
+				"refer": [
+					"dist/app_build/slidBar.html"
+				]
 			},
 			"dist/app_dev/index.html": {
 				"resources": [
@@ -284,7 +289,9 @@
 					"dist/app_dev/js/vendor.js",
 					"dist/app_dev/assets/css/mui.min.css",
 					"dist/app_dev/assets/js/wilddog-auth.js",
-					"dist/app_dev/assets/images/yuantiao.jpg"
+					"dist/app_dev/assets/images/yuantiao.jpg",
+					"dist/app_dev/assets/fonts/mui.ttf",
+					"dist/app_dev/assets/js/wilddog.js"
 				],
 				"refer": [
 					"dist/app_dev/slidBar.html"
@@ -296,61 +303,224 @@
 					"dist/app_dev/js/slidBar.js",
 					"dist/app_dev/css/slidBar.css",
 					"dist/app_dev/assets/css/mui.min.css",
+					"dist/app_dev/assets/images/avatar.jpg",
+					"dist/app_dev/assets/fonts/mui.ttf",
+					"dist/app_dev/assets/js/mui.min.js",
+					"dist/app_dev/assets/js/wilddog.js",
+					"dist/app_dev/js/manifest.js",
+					"dist/app_dev/js/vendor.js"
+				],
+				"refer": [
+					"dist/app_dev/userInfo.html"
+				],
+				"priority": 0
+			},
+			"dist/app_dev/userInfo.html": {
+				"resources": [
+					"dist/app_dev/css/userInfo.css",
+					"dist/app_dev/assets/css/mui.min.css",
+					"dist/app_dev/js/userInfo.js",
 					"dist/app_dev/assets/images/avatar.jpg"
 				],
+				"refer": [
+					"dist/app_dev/login.html",
+					"dist/app_dev/userInfoModify.html"
+				],
+				"priority": 0
+			},
+			"dist/app_dev/login.html": {
+				"resources": [
+					"dist/app_dev/js/login.js",
+					"dist/app_dev/css/login.css",
+					"dist/app_dev/assets/css/mui.min.css",
+					"dist/app_dev/assets/js/mui.min.js",
+					"dist/app_dev/js/manifest.js",
+					"dist/app_dev/js/vendor.js",
+					"dist/app_dev/assets/js/wilddog.js"
+				],
+				"refer": [
+					"dist/app_dev/index.html"
+				],
+				"priority": 0
+			},
+			"dist/app_dev/userInfoModify.html": {
+				"resources": [
+					"dist/app_dev/assets/fonts/mui.ttf",
+					"dist/app_dev/assets/js/mui.min.js",
+					"dist/app_dev/css/userInfoModify.css",
+					"dist/app_dev/js/userInfoModify.js",
+					"dist/app_dev/js/manifest.js",
+					"dist/app_dev/js/vendor.js",
+					"dist/app_dev/assets/css/mui.min.css",
+					"dist/app_dev/assets/js/wilddog.js"
+				],
 				"refer": [],
+				"priority": 0
+			},
+			"dist/app_build/slidBar.html": {
+				"resources": [
+					"dist/app_build/assets/images/avatar.jpg",
+					"dist/app_build/css/slidBar.css",
+					"dist/app_build/js/slidBar.js",
+					"dist/app_build/assets/css/mui.min.css"
+				],
+				"refer": [
+					"dist/app_build/userInfo.html"
+				],
+				"priority": 0
+			},
+			"dist/app_build/userInfo.html": {
+				"resources": [
+					"dist/app_build/assets/css/mui.min.css",
+					"dist/app_build/js/userInfo.js",
+					"dist/app_build/css/userInfo.css",
+					"dist/app_build/assets/images/avatar.jpg",
+					"dist/app_build/js/manifest.js",
+					"dist/app_build/js/vendor.js",
+					"dist/app_build/assets/js/wilddog.js",
+					"dist/app_build/assets/js/mui.min.js"
+				],
+				"refer": [
+					"dist/app_build/userInfoModify.html",
+					"dist/app_build/login.html"
+				],
+				"priority": 0
+			},
+			"dist/app_build/userInfoModify.html": {
+				"resources": [
+					"dist/app_build/assets/css/mui.min.css",
+					"dist/app_build/js/manifest.js",
+					"dist/app_build/css/userInfoModify.css",
+					"dist/app_build/js/userInfoModify.js",
+					"dist/app_build/js/vendor.js",
+					"dist/app_build/assets/js/wilddog.js",
+					"dist/app_build/assets/fonts/mui.ttf",
+					"dist/app_build/assets/js/mui.min.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/app_build/login.html": {
+				"resources": [
+					"dist/app_build/assets/css/mui.min.css",
+					"dist/app_build/js/manifest.js",
+					"dist/app_build/css/login.css",
+					"dist/app_build/js/vendor.js",
+					"dist/app_build/js/login.js",
+					"dist/app_build/assets/js/wilddog.js",
+					"dist/app_build/assets/js/mui.min.js"
+				],
+				"refer": [
+					"dist/app_build/index.html"
+				],
 				"priority": 0
 			}
 		},
 		"idle": {
 			"resources": [
 				"dist/app_dev/js/splash.js",
-				"app/src/common/bar.ts",
-				"dist/app_dev/assets/js/mui.js",
+				"app/src/module/slidBar/slidBar.scss",
+				"app/src/module/userInfo/userInfo.scss",
+				"app/src/module/userInfo/userInfo_modify/userInfoModify.html",
 				"assets/fonts/mui.ttf",
 				"assets/css/mui.css",
-				"app/src/components/splash/componets/children.ts",
+				"dist/app_dev/js/index.js.map",
+				"dist/app_dev/js/login.js.map",
 				"LICENSE",
-				"assets/js/mui.min.js",
+				"assets/js/wilddog.js",
+				"dist/app_dev/js/userInfo.js.map",
 				"package.json",
-				"assets/css/mui.min.css",
 				"dist/app_dev/assets/css/mui.css",
-				"tslint.json",
-				"assets/js/mui.js",
-				"webpack.config.js",
+				"assets/css/mui.min.css",
+				"app/src/common/index.ts",
+				"app/src/module/index.scss",
+				"app/src/module/userInfo/userInfo_modify/userInfoModify.ts",
 				"README.md",
-				"app/src/components/index.ts",
-				"dist/app_build/assets/js/mui.js",
-				"dist/app_build/assets/css/mui.css",
-				"dist/app_build/splash.html",
-				"dist/app_dev/splash.html",
-				"app/src/components/splash/splash.ts",
+				"app/src/module/slidBar/slidBar.ts",
+				"tsconfig.json",
+				"dist/app_dev/js/slidBar.js.map",
+				"app/src/module/splash/splash.ts",
+				"app/src/module/login/login.ts",
+				"dist/app_dev/assets/js/wilddog-sync.js",
+				"dist/app_dev/css/userInfoModify.css.map",
+				"app/src/module/userInfo/userInfo_modify/userInfoModify.scss",
+				"app/src/common/qiniuUploader.js",
 				"index.html",
-				"dist/app_dev/assets/fonts/mui.ttf",
-				"dist/app_build/js/splash.js",
-				"yarn.lock",
-				"app/src/components/index.scss"
+				"app/src/module/login/login.scss",
+				"dist/app_dev/css/userInfo.css.map",
+				"dist/app_dev/assets/images/search-plus.png",
+				"dist/app_dev/js/manifest.js.map",
+				"app/src/module/userInfo/userInfo.html",
+				"dist/app_dev/css/index.css.map",
+				"app/src/module/slidBar/slidBar.html",
+				"dist/app_dev/assets/js/mui.js",
+				"assets/images/avatar.jpg",
+				"assets/js/mui.min.js",
+				"dist/app_dev/assets/images/user-list.png",
+				"assets/images/search-plus.png",
+				"tslint.json",
+				"app/src/module/login/login.html",
+				"dist/app_dev/css/login.css.map",
+				"dist/app_dev/css/slidBar.css.map",
+				"webpack.config.js",
+				"assets/js/mui.js",
+				"app/src/module/userInfo/userInfo.ts",
+				"dist/app_dev/js/vendor.js.map",
+				"app/src/module/index.html",
+				"dist/app_dev/splash.html",
+				"assets/images/yuantiao.jpg",
+				"dist/app_dev/js/splash.js.map",
+				"app/src/common/scss/reset.scss",
+				"assets/images/user-list.png",
+				"app/src/module/index.ts",
+				"dist/app_dev/js/userInfoModify.js.map",
+				"yarn.lock"
 			]
 		}
 	},
 	"unpackage": [
-		"app/src/common/bar.ts",
-		"app/src/components/index.scss",
-		"app/src/components/index.ts",
-		"app/src/components/splash/componets/children.ts",
-		"app/src/components/splash/splash.ts",
-		"assets/css/mui.css",
-		"assets/css/mui.min.css",
-		"assets/fonts/mui.ttf",
-		"assets/js/mui.js",
-		"assets/js/mui.min.js",
-		"LICENSE",
-		"README.md",
-		"index.html",
-		"package.json",
-		"tslint.json",
-		"webpack.config.js",
-		"yarn.lock"
+	  "app/src/common/bar.ts",
+	  "app/src/components/index.scss",
+	  "app/src/components/index.ts",
+	  "app/src/components/splash/componets/children.ts",
+	  "app/src/components/splash/splash.ts",
+	  "assets/css/mui.css",
+	  "assets/css/mui.min.css",
+	  "assets/fonts/mui.ttf",
+	  "assets/js/mui.js",
+	  "assets/js/mui.min.js",
+	  "LICENSE",
+	  "README.md",
+	  "index.html",
+	  "package.json",
+	  "tslint.json",
+	  "webpack.config.js",
+	  "yarn.lock",
+	  "app/src/common/index.ts",
+	  "app/src/common/qiniuUploader.js",
+	  "app/src/common/scss/reset.scss",
+	  "app/src/module/index.html",
+	  "app/src/module/index.scss",
+	  "app/src/module/index.ts",
+	  "app/src/module/login/login.html",
+	  "app/src/module/login/login.scss",
+	  "app/src/module/login/login.ts",
+	  "app/src/module/slidBar/slidBar.html",
+	  "app/src/module/slidBar/slidBar.scss",
+	  "app/src/module/slidBar/slidBar.ts",
+	  "app/src/module/splash/splash.ts",
+	  "app/src/module/userInfo/userInfo.html",
+	  "app/src/module/userInfo/userInfo.scss",
+	  "app/src/module/userInfo/userInfo.ts",
+	  "app/src/module/userInfo/userInfo_modify/userInfoModify.html",
+	  "app/src/module/userInfo/userInfo_modify/userInfoModify.scss",
+	  "app/src/module/userInfo/userInfo_modify/userInfoModify.ts",
+	  "assets/images/avatar.jpg",
+	  "assets/images/search-plus.png",
+	  "assets/images/user-list.png",
+	  "assets/images/yuantiao.jpg",
+	  "assets/js/wilddog.js",
+	  "tsconfig.json"
 	],
 	"fullscreen": true
 }

@@ -1,7 +1,7 @@
 declare function require(path: string): any;
-import './login.scss'
-import * as Vue from 'vue'
-import * as finger from '../../common'
+import './login.scss';
+import * as Vue from 'vue';
+import * as finger from '../../common';
 
 let plus: any = (<any>window).plus;
 let mui: any = (<any>window).mui;
@@ -10,13 +10,10 @@ let wilddog: any = (<any>window).wilddog;
 
 let template: string = require('./login.html');
 
+//清空登录信息
+localStorage && localStorage.clear();
 
 finger.wilddogAuth(null, null);
-
-mui.init();
-mui.plusReady(function () {
-
-});
 
 interface LoginModel {
     type: string,
@@ -47,7 +44,7 @@ let LoginForm: any = {
             if (this.type === 'register' && this.verify_code.length < 5) {
                 return finger.showError('短信验证码为 5 位数字');
             }
-            var url = 'users/login',
+            let url = 'users/login',
                 data = {
                     phone: this.phone,
                     password: this.password
@@ -55,19 +52,24 @@ let LoginForm: any = {
             if (this.type === 'register') {
                 data = (<any>Object).assign(data, { verifyCode: this.verify_code });
                 url = 'users/reg';
+                plus.nativeUI.showWaiting("注册中...");
+                plus.nativeUI.closeWaiting();
             } else {
+                plus.nativeUI.showWaiting("登录中...");
                 wilddog.auth().signInWithPhoneAndPassword(this.phone, this.password).then((res) => {
                     console.log('success');
                     finger.openPage('index', {});
+                    plus.nativeUI.closeWaiting();
                 }).catch((error) => {
                     console.log(error);
                     finger.showError('手机或密码不正确');
+                    plus.nativeUI.closeWaiting();
                 });
             }
         },
         showPasswotd(ev) {
             let password: any = document.getElementById('password')
-            var type = password.getAttribute('type');
+            let type = password.getAttribute('type');
             password.setAttribute('type', type == 'text' ? 'password' : 'text');
             ev.target.style.opacity = type == 'text' ? '0.5' : '1'
         },
@@ -79,3 +81,15 @@ let LoginForm: any = {
     }
 }
 new Vue(LoginForm);
+
+mui.init();
+
+mui.plusReady(function () {
+    let ws = plus.webview.currentWebview();
+    mui.later(() => {
+        plus.webview.all().forEach(view => {
+            view.id != ws.id ? view.close('none') : '';
+        });
+    }, 300);
+    finger.back();
+});

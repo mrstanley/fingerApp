@@ -1,0 +1,10 @@
+<div>
+    <header class="mui-bar mui-bar-nav" id="header">
+        <a class="mui-icon iconfont icon-left mui-pull-left" @tap.stop.prevent="back"></a>
+        <h1 class="mui-title">{{title}}修改</h1>
+        <a class="mui-icon mui-pull-right" @tap.stop.prevent="save"><span>保存</span></a>
+    </header>
+    <div class="mui-content mui-content-padded">
+        <textarea id="userContext" v-model="value" class="mui-text-left" name="" rows="6" placeholder=""></textarea>
+    </div>
+</div>

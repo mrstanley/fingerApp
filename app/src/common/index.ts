@@ -100,7 +100,8 @@ export function getVerifyCode(phone) {
  */
 export function wilddogAuth(success, fail) {
     let config = {
-        authDomain: "finger.wilddog.com"
+        authDomain: "finger.wilddog.com",
+        syncURL: "https://finger.wilddogio.com"
     };
     wilddog.initializeApp(config);
     wilddog.auth().onAuthStateChanged((user) => {
@@ -118,11 +119,12 @@ export function openPage(page, param) {
         id: page,
         preload: true,
         show: {
-            aniShow: 'pop-in',
-            duration: 300
+            aniShow: 'slide-in-right',
+            duration: 300,
+            event: 'loaded'
         },
         styles: {
-            popGesture: 'hide'
+            popGesture: 'close'
         },
         waiting: {
             autoShow: false
@@ -130,3 +132,18 @@ export function openPage(page, param) {
         extras: param || {},
     });
 };
+
+export function back() {
+    var first: number = 0;
+    mui.back = function () {
+        if (!first) {
+            mui.toast('再按一次退出应用');
+            first++;
+            setTimeout(function () {
+                first = 0;
+            }, 1500);
+        } else {
+            plus.runtime.quit();
+        }
+    };
+}

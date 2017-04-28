@@ -1,0 +1,41 @@
+<section>
+    <header class="mui-bar mui-bar-nav" id="header">
+        <a class="mui-icon iconfont icon-left mui-pull-left mui-action-back"></a>
+        <h1 class="mui-title">个人信息</h1>
+        <a class="mui-icon mui-pull-right mui-hidden" id="card"><span>预览</span></a>
+    </header>
+    <div class="mui-content userInfo" id="content">
+        <div class="avatar">
+            <input type="file" :style="{backgroundImage:'url('+(avatar||'assets/images/avatar.jpg')+')'}" id="headImg" @change.stop.prevent="changeValue($event)"
+                class="headImg" value="" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg" />
+        </div>
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell" @tap.stop="userInfoModify('nickName',nickName)">
+                <label>昵称</label>
+                <p class="mui-pull-right">{{nickName||'填写您的昵称'}}</p>
+            </li>
+            <li class="mui-table-view-cell" @tap.stop="userInfoModify('email',email)">
+                <label>邮箱</label>
+                <p class="mui-pull-right">{{email||'填写您的邮箱地址'}}</p>
+            </li>
+            <li class="mui-table-view-cell mui-disabled">
+                <label>手机</label>
+                <p class="mui-pull-right mui-disabled">{{phone||'填写您的手机号码'}}</p>
+            </li>
+            <li class="mui-table-view-cell" @tap.stop="userInfoModify('signature',signature)">
+                <label class="mui-pull-left">签名</label>
+                <p class="mui-pull-right text">{{signature||'填写您的个人简介或个性签名'}}</p>
+            </li>
+            <li class="mui-table-view-cell">
+                <label>微信二维码</label>
+                <p class="mui-pull-right mui-icon iconfont icon-qrcode"></p>
+            </li>
+        </ul>
+        <br />
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell mui-text-center" @tap.prevent.stop="goLogin">
+                <label>{{phone?'退出登录':'登录'}}</label>
+            </li>
+        </ul>
+    </div>
+</section>
