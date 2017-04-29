@@ -50,7 +50,28 @@ export function setImmersed(bg: string | null) {
 /**
  * 请求根路径
  */
-export const ROOT = 'http://localhost:3000/';
+export const ROOT = 'http://www.fingerapp.top/';
+
+
+export function post(url, data, success, error) {
+    mui.ajax(ROOT + url, {
+        data: data,
+        dataType: 'json',//服务器返回json格式数据
+        type: 'post',//HTTP请求类型
+        timeout: 10000,//超时时间设置为10秒；
+        headers: { 'Content-Type': 'application/json' },
+        success: function (data) {
+            success && data.code == 200 ? success(data) : error(data);
+            plus.nativeUI.closeWaiting();
+        },
+        error: function (xhr, type, errorThrown) {
+            //异常处理；
+            error ? error() : '';
+            console.log(type);
+            plus.nativeUI.closeWaiting();
+        }
+    });
+}
 
 // 设置应用本地配置
 export let setSettings = (attr, val) => {
@@ -114,23 +135,28 @@ export function wilddogAuth(success, fail) {
  * @param {String|Object} 要打开页面的ID
  */
 export function openPage(page, param) {
-    mui.openWindow({
-        url: page + '.html',
-        id: page,
-        preload: true,
-        show: {
-            aniShow: 'slide-in-right',
-            duration: 300,
-            event: 'loaded'
-        },
-        styles: {
-            popGesture: 'close'
-        },
-        waiting: {
-            autoShow: false
-        },
-        extras: param || {},
-    });
+    let tmp = plus.webview.getWebviewById(page);
+    if (tmp) {
+        tmp.show('slide-in-right', 250);
+    } else {
+        mui.openWindow({
+            url: page + '.html',
+            id: page,
+            preload: true,
+            show: {
+                aniShow: 'slide-in-right',
+                duration: 250,
+                event: 'loaded'
+            },
+            styles: {
+                popGesture: 'close'
+            },
+            waiting: {
+                autoShow: false
+            },
+            extras: param || {},
+        });
+    }
 };
 
 export function back() {

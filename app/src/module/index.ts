@@ -17,7 +17,7 @@ new Vue({
     el: '#index',
     data() {
         return {
-            title: '测试页面',
+            title: '指尖推广',
             banerImg: 'assets/images/yuantiao.jpg'
         }
     },
@@ -93,12 +93,18 @@ function openMenu() {
         menu.show('none', 0, () => menu.setStyle({
             left: '0%',
             transition: {
-                duration: 200
+                duration: 250
             }
         }));
         //显示遮罩
         mask.show();
         showMenu = true;
+    }
+    if (!plus.webview.getWebviewById('userInfo')) {
+        mui.preload({
+            id: 'userInfo',
+            url: 'userInfo.html'
+        });
     }
 }
 /**
@@ -119,7 +125,7 @@ function _closeMenu() {
         menu.setStyle({
             left: '-70%',
             transition: {
-                duration: 200
+                duration: 250
             }
         });
         //等窗体动画结束后，隐藏菜单webview，节省资源；

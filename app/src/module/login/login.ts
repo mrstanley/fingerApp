@@ -11,9 +11,11 @@ let wilddog: any = (<any>window).wilddog;
 let template: string = require('./login.html');
 
 //清空登录信息
-localStorage && localStorage.clear();
 
 finger.wilddogAuth(null, null);
+wilddog.auth().signOut().then(() => {
+    console.info("user sign out.");
+});
 
 interface LoginModel {
     type: string,
@@ -44,28 +46,29 @@ let LoginForm: any = {
             if (this.type === 'register' && this.verify_code.length < 5) {
                 return finger.showError('短信验证码为 5 位数字');
             }
-            let url = 'users/login',
+            plus.nativeUI.showWaiting(this.type == 'register' ? "注册中..." : "登录中...");
+            var url = 'users/login',
                 data = {
                     phone: this.phone,
                     password: this.password
                 };
-            if (this.type === 'register') {
+            if (this.type == 'register') {
                 data = (<any>Object).assign(data, { verifyCode: this.verify_code });
                 url = 'users/reg';
-                plus.nativeUI.showWaiting("注册中...");
-                plus.nativeUI.closeWaiting();
-            } else {
-                plus.nativeUI.showWaiting("登录中...");
-                wilddog.auth().signInWithPhoneAndPassword(this.phone, this.password).then((res) => {
-                    console.log('success');
-                    finger.openPage('index', {});
-                    plus.nativeUI.closeWaiting();
-                }).catch((error) => {
-                    console.log(error);
-                    finger.showError('手机或密码不正确');
-                    plus.nativeUI.closeWaiting();
-                });
             }
+            finger.post(url, data, (data) => {
+                if (data.code == 200) {
+                    wilddog.auth().signInWithCustomToken(data.token).then((user) => {
+                        finger.openPage('index', {});
+                    }).catch((error) => {
+                        console.log(JSON.stringify(error));
+                    });
+                }
+                mui.toast(data.msg);
+            }, (data) => {
+                mui.toast(!data ? '服务器错误' : data.msg);
+            });
+
         },
         showPasswotd(ev) {
             let password: any = document.getElementById('password')
@@ -80,6 +83,7 @@ let LoginForm: any = {
         }
     }
 }
+
 new Vue(LoginForm);
 
 mui.init();
