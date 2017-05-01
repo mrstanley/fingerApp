@@ -54,6 +54,9 @@ let userInfo = new Vue({
                 value: value
             });
         },
+        current(a) {
+            console.log(a);
+        },
         goLogin() {
             finger.openPage('login', {});
         }

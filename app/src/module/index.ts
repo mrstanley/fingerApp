@@ -129,7 +129,7 @@ function _closeMenu() {
             }
         });
         //等窗体动画结束后，隐藏菜单webview，节省资源；
-        setTimeout(() => menu.hide(), 250);
+        setTimeout(() => menu.hide(), 300);
         //改变标志位
         showMenu = false;
     }

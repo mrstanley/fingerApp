@@ -1,5 +1,7 @@
 declare function require(path: string): any;
 
+import './directives'
+
 let plus: any = (<any>window).plus;
 let mui: any = (<any>window).mui;
 let wilddog: any = (<any>window).wilddog;
@@ -30,7 +32,6 @@ export function setImmersed(bg: string | null) {
     if (!immersed) {
         return;
     }
-    console.log(immersed);
     let t = document.getElementById('header');
     // t && (t.style.paddingTop = immersed + 'px', t.style.background = '-webkit-linear-gradient(top,rgba(215,75,40,1),rgba(215,75,40,0.8))', t.style.height = (t.offsetHeight + immersed) + 'px');
     t && (t.style.paddingTop = immersed + 'px', bg && (t.style.backgroundColor = bg || '#fff'), t.style.height = (t.offsetHeight + immersed) + 'px');
@@ -137,7 +138,7 @@ export function wilddogAuth(success, fail) {
 export function openPage(page, param) {
     let tmp = plus.webview.getWebviewById(page);
     if (tmp) {
-        tmp.show('slide-in-right', 250);
+        tmp.show('slide-in-right', 300);
     } else {
         mui.openWindow({
             url: page + '.html',
@@ -145,7 +146,7 @@ export function openPage(page, param) {
             preload: true,
             show: {
                 aniShow: 'slide-in-right',
-                duration: 250,
+                duration: 300,
                 event: 'loaded'
             },
             styles: {
