@@ -1,3 +1,29 @@
 {
-    "extends": "tslint:recommended"
+    "extends": "tslint:latest",
+    "rules": {
+        "no-var-requires": false,
+        "no-empty": false,
+        "no-unused-expression": false,
+        "no-shadowed-variable": false,
+        // "member-access": [
+        //     false
+        // ],
+        "one-variable-per-declaration": [
+            false
+        ],
+        "indent": [
+
+        ],
+        "object-literal-sort-keys": false,
+        "max-line-length": [
+
+        ],
+        "no-console": [
+
+        ],
+        "trailing-comma": [true, {
+            "multiline": "never",
+            "singleline": "never"
+        }]
+    }
 }

@@ -13,7 +13,8 @@
         "suppressImplicitAnyIndexErrors": true,
         "strictNullChecks": true,
         "noImplicitThis": true,
-        "removeComments": true
+        "removeComments": true,
+        "allowSyntheticDefaultImports": true
     },
     "compileOnSave": false,
     "include": [
