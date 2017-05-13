@@ -3,7 +3,6 @@ import Vue from "vue";
 import * as finger from "../../common";
 import "./userInfo.scss";
 
-
 const { plus, mui, plusReady, wilddog } = finger;
 
 const template: string = require("./userInfo.html");
@@ -24,7 +23,6 @@ finger.wilddogAuth((user) => {
         }
     });
 }, null);
-
 
 plusReady((view) => {
     // do something

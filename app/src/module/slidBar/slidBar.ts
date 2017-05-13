@@ -3,9 +3,7 @@ import Vue from "vue";
 import * as finger from "../../common";
 import "./slidBar.scss";
 
-
 const { plus, mui, plusReady, wilddog } = finger;
-
 
 const template: string = require("./slidBar.html");
 

@@ -185,7 +185,6 @@ export function back() {
     };
 }
 
-
 export function createTitle(title, leftBtn?, rightBtn?) {
     const topoffset = getImmersed();
     const currentView = plus.webview.currentWebview();
@@ -211,7 +210,6 @@ export function createTitle(title, leftBtn?, rightBtn?) {
     }, false);
     currentView.append(titleView);
 }
-
 
 export function plusReady(cb) {
     function ready() {
