@@ -1,11 +1,9 @@
 declare function require(path: string): any;
-import * as Vue from "vue";
+import Vue from "vue";
 import * as finger from "../../common";
 import "./login.scss";
 
-const plus: any = (window as any).plus;
-const mui: any = (window as any).mui;
-const wilddog: any = (window as any).wilddog;
+const { plus, mui, plusReady, wilddog } = finger;
 
 const template: string = require("./login.html");
 
@@ -87,12 +85,11 @@ new Vue(LoginForm);
 
 mui.init();
 
-mui.plusReady(() => {
-    const ws = plus.webview.currentWebview();
+plusReady((view) => {
     mui.later(() => {
-        plus.webview.all().forEach((view) => {
-            view.id !== ws.id ? view.close("none") : "";
+        plus.webview.all().forEach((item) => {
+            item.id !== view.id ? item.close("none") : "";
         });
-    }, 300);
+    }, 400);
     finger.back();
 });

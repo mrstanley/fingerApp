@@ -1,11 +1,7 @@
 declare function require(path: string): any;
 import Vue from "vue";
-import { back, setImmersed, wilddogAuth } from "../common";
+import { back, mui, plus, plusReady, setImmersed, wilddogAuth } from "../common";
 import "./index.scss";
-
-const plus: any = (window as any).plus;
-const mui: any = (window as any).mui;
-const wilddog: any = (window as any).wilddog;
 
 const startTime = Date.now();
 const template: string = require("./index.html");
@@ -39,13 +35,13 @@ wilddogAuth((user) => {
 }, null);
 
 // H5 plus事件处理
-function plusReady() {
+
+plusReady((view) => {
     // 设置系统状态栏背景为红色
     plus.navigator.setStatusBarBackground("#fff");
     plus.navigator.setStatusBarStyle("dark");
     plus.navigator.isFullscreen() ? plus.navigator.setFullscreen(false) : "";
-
-    main = plus.webview.currentWebview();
+    main = view;
     // 预加载侧边菜单
     menu = mui.preload({
         id: "slidBar",
@@ -70,14 +66,7 @@ function plusReady() {
     }, 500);
 
     back();
-
-}
-
-if (plus) {
-    plusReady();
-} else {
-    document.addEventListener("plusready", plusReady, false);
-}
+});
 
 mui.init({
     swipeBack: false

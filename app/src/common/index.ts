@@ -2,9 +2,9 @@ declare function require(path: string): any;
 
 import "./directives";
 
-const plus: any = (window as any).plus;
-const mui: any = (window as any).mui;
-const wilddog: any = (window as any).wilddog;
+export const plus: any = (window as any).plus;
+export const mui: any = (window as any).mui;
+export const wilddog: any = (window as any).wilddog;
 
 // 判断是否全屏，返回状态栏高度
 export function getImmersed() {
@@ -49,6 +49,7 @@ export function setImmersed(bg: string | null) {
  */
 // export const ROOT = "http://127.0.0.1:3000/";
 export const ROOT = "http://www.fingerapp.top/";
+export const ASSETSIMG = "_www/dist/app_dev/assets/images/";
 
 // 设置 cookie
 export function setCookie(key: string, value: any, time?: number): void {
@@ -182,4 +183,44 @@ export function back() {
             plus.runtime.quit();
         }
     };
+}
+
+
+export function createTitle(title, leftBtn?, rightBtn?) {
+    const topoffset = getImmersed();
+    const currentView = plus.webview.currentWebview();
+    // 开启回弹
+    currentView.setStyle({
+        bounce: "vertical",
+        bounceBackground: "#eee"
+    });
+    const childNode: object[] = [
+        { tag: "rect", id: "rect", color: "#eee", position: { top: (topoffset + 44) + "px", left: "0px", width: "100%", height: "1px" } },
+        { tag: "font", id: "font", text: title, position: { top: topoffset + "px", left: "0px", width: "100%", height: "44px" }, textStyles: { size: "17px", color: "#444" } }
+    ];
+    leftBtn ? childNode.push({ tag: "img", id: "leftBtn", src: ASSETSIMG + leftBtn.icon, position: { top: (topoffset + 10) + "px", left: "10px", width: "24px", height: "24px" } }) : "";
+    rightBtn ? childNode.push({ tag: "img", id: "rightBtn", src: ASSETSIMG + rightBtn.icon, position: { top: (topoffset + 10) + "px", left: (window.innerWidth - 34) + "px", width: "24px", height: "24px" } }) : "";
+    const titleView = new plus.nativeObj.View("titleView", { top: "0px", left: "0px", height: (topoffset + 45) + "px", width: "100%", backgroundColor: "#fff", dock: "top", position: "dock" }, childNode);
+    titleView.addEventListener("click", (e) => {
+        const x = e.clientX;
+        if (x < 44 && leftBtn && leftBtn.click) {
+            leftBtn.click();
+        } else if (x > window.innerWidth - 34 && rightBtn && rightBtn.click) {
+            rightBtn.click();
+        }
+    }, false);
+    currentView.append(titleView);
+}
+
+
+export function plusReady(cb) {
+    function ready() {
+        const webview = plus.webview.currentWebview();
+        cb(webview);
+    }
+    if (plus) {
+        ready();
+    } else {
+        document.addEventListener("plusready", ready, false);
+    }
 }

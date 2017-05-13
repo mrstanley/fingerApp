@@ -1,11 +1,9 @@
 declare function require(path: string): any;
-import * as Vue from "vue";
+import Vue from "vue";
 import * as finger from "../../../common";
 import "./userInfoModify.scss";
 
-const plus: any = (window as any).plus;
-const mui: any = (window as any).mui;
-const wilddog: any = (window as any).wilddog;
+const { plus, mui, plusReady, wilddog } = finger;
 const template: string = require("./userInfoModify.html");
 let userId: any = "";
 // 认证登录
