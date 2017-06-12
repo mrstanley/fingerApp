@@ -5,6 +5,11 @@
         "no-empty": false,
         "no-unused-expression": false,
         "no-shadowed-variable": false,
+        "no-bitwise": false,
+        "variable-name": [
+            false
+        ],
+        "curly": false,
         // "member-access": [
         //     false
         // ],

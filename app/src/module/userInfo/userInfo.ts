@@ -7,10 +7,14 @@ const { plus, mui, plusReady, wilddog } = finger;
 
 const template: string = require("./userInfo.html");
 
+let currentUser: object | any = null;
+let users: object | any = null;
+
 // 认证登录
 finger.wilddogAuth((user) => {
     console.log(JSON.stringify(user));
-    const users = wilddog.sync().ref("users");
+    currentUser = user;
+    users = wilddog.sync().ref("users");
     users.child(user.uid).on("value", (info, error) => {
         if (error == null) {
             const obj = info.val();
@@ -28,7 +32,7 @@ plusReady((view) => {
     // do something
 });
 
-const userInfo = new Vue({
+const userInfo: object | any = new Vue({
     el: "#userInfo",
     template,
     data() {
@@ -55,8 +59,15 @@ const userInfo = new Vue({
                 value
             });
         },
-        current(a) {
-            console.log(a);
+        avatarChange(newAvatar) {
+            userInfo.avatar = newAvatar;
+            const users = wilddog.sync().ref("users");
+            users.child(currentUser.uid).update({ avatar: newAvatar }).then(() => {
+                console.info("update data success.");
+            }).catch((err) => {
+                console.info("update data failed", err.code, err);
+                mui.toast("头像更新失败，请稍后重试");
+            });
         },
         goLogin() {
             finger.openPage("login", {});

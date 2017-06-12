@@ -1,6 +1,6 @@
 declare function require(path: string): any;
 import Vue from "vue";
-import { back, mui, plus, plusReady, setImmersed, wilddogAuth } from "../common";
+import { back, hideScroll, mui, plus, plusReady, setImmersed, wilddogAuth } from "../common";
 import "./index.scss";
 
 const startTime = Date.now();
@@ -13,7 +13,7 @@ new Vue({
     el: "#index",
     data() {
         return {
-            title: "指尖",
+            title: "指尖推广",
             banerImg: "assets/images/yuantiao.jpg"
         };
     },
@@ -38,9 +38,12 @@ wilddogAuth((user) => {
 
 plusReady((view) => {
     // 设置系统状态栏背景为红色
-    plus.navigator.setStatusBarBackground("#fff");
-    plus.navigator.setStatusBarStyle("dark");
+    // 关闭全屏
     plus.navigator.isFullscreen() ? plus.navigator.setFullscreen(false) : "";
+    // 设置系统状态栏背景为白色
+    // plus.navigator.setStatusBarBackground(plus.os.name.toLowerCase() === "ios" ? "#fff" : "#000");
+    // 设置状态栏文字颜色为黑色 light  dark
+    plus.navigator.setStatusBarStyle(plus.os.name.toLowerCase() === "ios" ? "dark" : "dark");
     main = view;
     // 预加载侧边菜单
     menu = mui.preload({
@@ -66,6 +69,8 @@ plusReady((view) => {
     }, 500);
 
     back();
+    // 隐藏滚动条
+    hideScroll();
 });
 
 mui.init({

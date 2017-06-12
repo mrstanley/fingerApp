@@ -1,19 +1,6 @@
 @import "../common/scss/reset";
 
-/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
-
-html::-webkit-scrollbar {
-    background-color: #F5F5F5;
-    opacity: 1;
-    display: none;
-}
-
 body {
-    &::-webkit-scrollbar {
-        background-color: #F5F5F5;
-        opacity: 1;
-        display: none;
-    }
     color: darkblue;
     .mui-bar {
         background-color: rgba(255, 255, 255, 0.5);

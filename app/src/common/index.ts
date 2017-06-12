@@ -1,6 +1,7 @@
 declare function require(path: string): any;
 
 import "./directives";
+export * from "./qiniu";
 
 export const plus: any = (window as any).plus;
 export const mui: any = (window as any).mui;
@@ -221,4 +222,11 @@ export function plusReady(cb) {
     } else {
         document.addEventListener("plusready", ready, false);
     }
+}
+
+// 隐藏滚动条
+export function hideScroll() {
+    plus.webview.currentWebview().setStyle({
+        scrollIndicator: "none"
+    });
 }

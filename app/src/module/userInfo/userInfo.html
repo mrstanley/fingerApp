@@ -7,7 +7,7 @@
     <div class="mui-content userInfo" id="content">
         <div class="avatar">
             <!--<input type="file" :style="{backgroundImage:'url('+(avatar||'assets/images/avatar.jpg')+')'}" id="headImg" @change.stop.prevent="changeValue($event)" class="headImg" value="" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg" />-->
-            <div class="headImg" v-img-cropper="current" :style="{backgroundImage:'url('+(avatar||'assets/images/avatar.jpg')+')'}" id="headImg"></div>
+            <div class="headImg" v-img-cropper:avatar="avatarChange" :style="{backgroundImage:'url('+(avatar||'assets/images/avatar.jpg')+')'}" id="headImg"></div>
         </div>
         <ul class="mui-table-view">
             <li class="mui-table-view-cell" @tap.stop="userInfoModify('nickName',nickName)">
