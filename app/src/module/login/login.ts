@@ -56,7 +56,7 @@ const LoginForm: any = {
             finger.post(url, data, (data) => {
                 wilddog.auth().signInWithCustomToken(data.token).then((user) => {
                     finger.openPage("index", {});
-                    mui.toast(data.msg);
+                    // mui.toast(data.msg);
                     plus.nativeUI.closeWaiting();
                 }).catch((error) => {
                     console.log(JSON.stringify(error));

@@ -1,5 +1,6 @@
 {
     "extends": "tslint:latest",
+    "rulesDirectory": ["app/"],
     "rules": {
         "no-var-requires": false,
         "no-empty": false,
